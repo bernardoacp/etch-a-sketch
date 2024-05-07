@@ -17,6 +17,10 @@ body {
     justify-content: space-evenly;
 }
 
+.btns {
+    padding-bottom: 25px;
+}
+
 .vertical {
     background-color: black;
     display: flex;

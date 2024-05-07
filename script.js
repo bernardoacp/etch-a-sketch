@@ -3,7 +3,11 @@ let container = document.querySelector('#container');
 let setDimension = document.querySelector('.dimension');
 let clear = document.querySelector('.clear');
 
+let standardMode = document.querySelector('.standard');
+let rainbowMode = document.querySelector('.rainbow');
+
 let pixel, pixelRow;
+let mode = 'standard';
 let i, j;
 
 function createGrid(dimension) {
@@ -25,15 +29,32 @@ function createGrid(dimension) {
     }
 }
 
-function paintGrid() {
+function getRandomColor() {
+    let hexValues = '0123456789ABCDEF';
+    let color = '#';
+    for (i = 0; i < 6; i++) {
+        color += hexValues[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function paintGrid(mode) {
     pixel = document.querySelectorAll('.horizontal');
     pixelRow = document.querySelectorAll('.vertical');
 
     for (i = 0; i < pixel.length; i++) {
         pixel[i].addEventListener('mouseover', (event2) => {
-            event2.target.style.backgroundColor = 'black';
+            if (mode == 'standard')
+                event2.target.style.backgroundColor = 'black';
+            else 
+                event2.target.style.backgroundColor = getRandomColor();
         } )
     }
+}
+
+function clearGrid() {
+for (i = 0; i < pixel.length; i++)
+    pixel[i].style.backgroundColor = 'white';
 }
 
 function deleteGrid() {
@@ -68,16 +89,31 @@ function promptUser() {
 
     deleteGrid();
     createGrid(gridDimension);
-    paintGrid();
+    paintGrid(mode);
 }
 
 createGrid(16);
-paintGrid();
+paintGrid(mode);
 
 setDimension.addEventListener('click', promptUser);
 
 // When clearing the grid, there's no need to remove the elements, hence the function deleteGrid() should not be used here
-clear.addEventListener('click', () => {
-    for (i = 0; i < pixel.length; i++)
-        pixel[i].style.backgroundColor = 'white';
-});
+clear.addEventListener('click', clearGrid);
+
+standardMode.addEventListener('click', () => {
+    if (mode == 'standard')
+        return;
+    
+    mode = 'standard';
+    clearGrid();
+    paintGrid(mode);
+})
+
+rainbowMode.addEventListener('click', () => {
+    if (mode == 'rainbow')
+        return;
+    
+    mode = 'rainbow';
+    clearGrid();
+    paintGrid(mode);
+})
