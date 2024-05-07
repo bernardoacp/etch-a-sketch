@@ -1,7 +1,31 @@
+body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    background-color: black;
+    height: 980px;
+    width: 980px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .vertical {
-    background-color: #ADD8E6;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 1;
+    margin: 1px;
 }
 
 .horizontal {
-    background: aquamarine;
+    background: white;
+    margin: 1px;
+    height: 100%;
+    width: 100%;
 }
