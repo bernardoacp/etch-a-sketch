@@ -1,6 +1,7 @@
 let container = document.querySelector('#container');
 
 let setDimension = document.querySelector('.dimension');
+let clear = document.querySelector('.clear');
 
 let pixel, pixelRow;
 let i, j;
@@ -35,18 +36,13 @@ function paintGrid() {
     }
 }
 
-function clearGrid() {
+function deleteGrid() {
     for (i = 0; i < pixel.length; i++)
         pixel[i].remove();
     
     for (i = 0; i < pixelRow.length; i++) 
         pixelRow[i].remove();
 }
-
-createGrid(16);
-paintGrid();
-
-setDimension.addEventListener('click', promptUser);
 
 function promptUser() {
     gridDimension = window.prompt('Please enter the number of squares per side:', '16');
@@ -70,7 +66,18 @@ function promptUser() {
         return;
     }
 
-    clearGrid();
+    deleteGrid();
     createGrid(gridDimension);
     paintGrid();
 }
+
+createGrid(16);
+paintGrid();
+
+setDimension.addEventListener('click', promptUser);
+
+// When clearing the grid, there's no need to remove the elements, hence the function deleteGrid() should not be used here
+clear.addEventListener('click', () => {
+    for (i = 0; i < pixel.length; i++)
+        pixel[i].style.backgroundColor = 'white';
+});
