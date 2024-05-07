@@ -4,6 +4,7 @@ let setDimension = document.querySelector('.dimension');
 let clear = document.querySelector('.clear');
 
 let standardMode = document.querySelector('.standard');
+standardMode.classList.toggle('active');
 let rainbowMode = document.querySelector('.rainbow');
 
 let pixel, pixelRow;
@@ -101,19 +102,28 @@ setDimension.addEventListener('click', promptUser);
 clear.addEventListener('click', clearGrid);
 
 standardMode.addEventListener('click', () => {
+    
     if (mode == 'standard')
         return;
-    
+
+    standardMode.classList.toggle('active');
+    rainbowMode.classList.toggle('active');
+
     mode = 'standard';
     clearGrid();
     paintGrid(mode);
 })
 
 rainbowMode.addEventListener('click', () => {
+    
     if (mode == 'rainbow')
         return;
+
+    rainbowMode.classList.toggle('active');
+    standardMode.classList.toggle('active');
     
     mode = 'rainbow';
     clearGrid();
     paintGrid(mode);
 })
+
