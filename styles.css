@@ -6,6 +6,8 @@ body {
 
 #container {
     background-color: black;
+    padding-top: 1px;
+    padding-bottom: 1px;
     height: 980px;
     width: 980px;
     display: flex;

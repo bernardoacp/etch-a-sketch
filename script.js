@@ -18,3 +18,11 @@ for (let i = 0; i < gridDimension; i++) {
     }
     container.appendChild(verticalDiv);
 }
+
+let pixel = document.querySelectorAll('.horizontal')
+
+for (let i = 0; i < pixel.length; i++) {
+    pixel[i].addEventListener('mouseover', (event2) => {
+        event2.target.style.backgroundColor = 'black';
+    } )
+}
