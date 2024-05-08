@@ -4,7 +4,7 @@ let setDimension = document.querySelector('.dimension');
 let clear = document.querySelector('.clear');
 
 let standardMode = document.querySelector('.standard');
-standardMode.classList.toggle('active');
+standardMode.classList.toggle('standard-active');
 let rainbowMode = document.querySelector('.rainbow');
 
 let pixel, pixelRow;
@@ -44,13 +44,16 @@ function paintGrid(mode) {
     pixelRow = document.querySelectorAll('.vertical');
 
     for (i = 0; i < pixel.length; i++) {
-        pixel[i].addEventListener('mouseover', (event2) => {
+        
+        pixel[i].addEventListener('mousemove', (ev) => {
+            
             if (mode == 'standard')
-                event2.target.style.backgroundColor = 'black';
+                ev.target.style.backgroundColor = 'black';
             else 
-                event2.target.style.backgroundColor = getRandomColor();
-        } )
+                ev.target.style.backgroundColor = getRandomColor();
+        })
     }
+    
 }
 
 function clearGrid() {
@@ -106,8 +109,8 @@ standardMode.addEventListener('click', () => {
     if (mode == 'standard')
         return;
 
-    standardMode.classList.toggle('active');
-    rainbowMode.classList.toggle('active');
+    standardMode.classList.toggle('standard-active');
+    rainbowMode.classList.toggle('rainbow-active');
 
     mode = 'standard';
     clearGrid();
@@ -119,8 +122,8 @@ rainbowMode.addEventListener('click', () => {
     if (mode == 'rainbow')
         return;
 
-    rainbowMode.classList.toggle('active');
-    standardMode.classList.toggle('active');
+    rainbowMode.classList.toggle('rainbow-active');
+    standardMode.classList.toggle('standard-active');
     
     mode = 'rainbow';
     clearGrid();

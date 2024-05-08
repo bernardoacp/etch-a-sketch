@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
+    font-family: Roboto, sans-serif;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+button {
+    font-family: Roboto, sans-serif;
 }
 
 #container {
@@ -17,17 +24,21 @@ body {
     justify-content: space-evenly;
 }
 
-.btns {
+#mode {
     padding-bottom: 25px;
 }
 
-button:active, .active {
+.standard:active, .standard-active {
     background: #e5e5e5;
     -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
     box-shadow: inset 0px 0px 5px #c1c1c1;
     outline: none;
 }
+
+.rainbow:active, .rainbow-active {
+    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+  }
 
 .vertical {
     background-color: black;
